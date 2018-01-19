@@ -1,0 +1,775 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-layout/app-box/app-box.html">
+<link rel="import" href="../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../../bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/web-animations-js/web-animations.min.html">
+
+<dom-module id="wsf-app">
+  <template>
+    <style include="iron-flex iron-flex-alignment iron-flex-factors app-grid-style">
+      :host {
+        display: block;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+      }
+
+      header {
+        background-color: white;
+        height: 128px;
+      }
+
+      #scrollingRegion {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        overflow-y: scroll;
+        background-color: #f3f3f3;
+        box-shadow: 0 0 200px rgba(0, 0, 0, 0.1);
+        scroll-behavior: smooth;
+      }
+
+      app-toolbar {
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 5px;
+        text-align: center;
+        color: #1a237e;
+      }
+
+      .nav {
+        height: 64px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+
+      .nav li {
+        display: inline-block;
+        list-style: none;
+      }
+
+      .nav a {
+        display: inline-block;
+        font-weight: 12px;
+        line-height: 64px;
+        text-decoration: none;
+        color: black;
+        font-weight: 300;
+        margin: 0 10px;
+      }
+
+      .nav a:hover {
+        color: #444;
+        border-bottom: 1px solid #999;
+      }
+
+      [threshold-triggered] {
+        position: fixed;
+        top: 20vh;
+        left: 0;
+        right: 0;
+        z-index: 1;
+      }
+
+      .hero {
+        height: 100vh;
+
+        --app-box-background-front-layer: {
+          background-image: url(assets/hackathon-2560x1600.jpg);
+          background-position: top;
+          padding-bottom: 0vh;
+          margin-top: 0;
+          height: 115%;
+        };
+      }
+
+      section {
+        padding-top: 0;
+      }
+
+      article {
+        font-weight: 400;
+        text-align: center;
+        /*box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.6);*/
+        text-shadow: 0 1px 0 #ccc;
+      }
+
+      div#nav_bar {
+        @apply --layout-horizontal;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      ul.app-grid {
+        padding: 0;
+        list-style: none;
+      }
+
+      .blue {
+        color: #5ABBDA;
+      }
+      .orange {
+        color: #F18A19;
+      }
+      .purple {
+        color: #C54A8F;
+      }
+      .dark {
+        color: #3F3F3F;
+      }
+      .black {
+        color: #000;
+      }
+
+      div.cat-info-box {
+        z-index: 10;
+        background-color: #fff;
+        border-radius: 10%;
+        box-shadow: 4px 4px 16px rgba(0,0,0,.2);
+      }
+
+      div.opacity-mask {
+        position: relative;
+        padding-top: 20px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 10%;
+        opacity: 0.86;
+      }
+
+      div#ad_info {
+        background: #fff url("/src/wsf-app/assets/a-d.svg") no-repeat center center;
+        background-size: 60%;
+      }
+      div#cp_info {
+        background: #fff url("/src/wsf-app/assets/chatpods.svg") no-repeat center center;
+        background-size: 60%;
+      }
+      div#se_info_d, div#se_info_m {
+        background: #fff url("/src/wsf-app/assets/startup-expo.svg") no-repeat center center;
+        background-size: 60%;
+      }
+      div#ip_info_d, div#ip_info_m {
+        background: #fff url("/src/wsf-app/assets/ideapad.svg") no-repeat center center;
+        background-size: 60%;
+      }
+      div#lp_info {
+        background: #fff url("/src/wsf-app/assets/launchpad.svg") no-repeat center center;
+        background-size: 60%;
+      }
+      div#co_info {
+        background: #fff url("/src/wsf-app/assets/collaboratorium.svg") no-repeat center center;
+        background-size: 60%;
+      }
+
+
+      @media only screen and (max-width: 480px) {
+
+      }
+
+      @media only screen and (max-width: 991px){
+        article.content {
+          margin: 0 auto 52px auto;
+          /*height: 80vh;*/
+        }
+
+        div#nav_bar {
+          position: fixed;
+          bottom: 0px;
+          width: 99vw;
+          padding: 1vw;
+          text-align: center;
+          background-color: rgba(0,0,0,.5);
+        }
+
+        div#logo {
+          @apply --layout-flex;
+        }
+
+        div#logo img {
+          height: 40px;
+        }
+
+        div#intro {
+          @apply --layout-vertical;
+        }
+
+        div#i1 {
+          margin-bottom: 40px;
+        }
+
+        div#i2 {
+          --app-grid-columns: 2;
+          --app-grid-item-height: 100%;
+          --app-grid-gutter: 1.5%;
+          height: calc(100vh - 52px);
+        }
+
+        div.cat-info-box {
+          position: absolute;
+          width: 88vw;
+          height: 150%;
+          padding: 1vw;
+          float: left;
+        }
+        div.opacity-mask {
+          height: 95%;
+        }
+
+        div#ad_info {
+          top: 0;
+          left: 5vw;
+        }
+        div#cp_info {
+          top: 0;
+          left: -45vw;
+        }
+        div#se_info_m {
+          top: 0;
+          left: -45vw;
+        }
+        div#ip_info_m {
+          top: 0;
+          left: 5vw;
+        }
+        div#lp_info {
+          top: 0;
+          left: 5vw;
+        }
+        div#co_info {
+          top: 0;
+          left: -45vw;
+        }
+
+        div.cat-info-box h2 {
+          margin-top: 0;
+          font-weight: 700;
+          font-size: 30px;
+          line-height: 1.15em;
+          letter-spacing: .07em;
+          word-spacing: -.20em;
+          text-shadow: 2px 2px 4px rgba(0,0,0,.4);
+        }
+
+        div.cat-info-box p {
+          font-size: 18px;
+        }
+
+        img.info-icon {
+          float: left;
+          margin: 5px;
+        }
+
+        article h1 {
+          font-weight: 700;
+          font-size: 30px;
+          line-height: 1.15em;
+          margin-top: 10px;
+          margin-bottom: 30px;
+          letter-spacing: .1em;
+          word-spacing: -.20em;
+        }
+        article h1.a-title {
+          color: #F18A19;
+        }
+        article p {
+          font-size: 16px;
+          line-height: 22px;
+          font-stretch: expanded;
+          text-align: left;
+          padding-left: 2%;
+          padding-right: 2%;
+          margin: 4px 10px 15px;
+          text-shadow: 0 1px 0 #fff;
+        }
+        article hr {
+          width: 100px;
+          height: 1px;
+          border: none;
+          margin: 20px auto;
+          background-color: black;
+        }
+
+        img#se_icon_d {
+          display: none;
+        }
+        img#ip_icon_d {
+          display: none;
+        }
+
+        img.cat-icon {
+          width: 120px;
+          height: 120px;
+        }
+      }
+
+      @media only screen and (min-width: 992px) and (max-width: 1920px) {
+        article.content {
+          margin: 0 auto 101px auto;
+          /*height: 80vh;*/
+        }
+
+        div#nav_bar {
+          position: fixed;
+          bottom: 0px;
+          width: 99vw;
+          padding: 1vw;
+          text-align: center;
+          background-color: rgba(0,0,0,.5);
+        }
+
+        div#logo {
+          @apply --layout-flex;
+        }
+
+        div#logo img {
+          height: 50px;
+        }
+
+        div#intro {
+          @apply --layout-horizontal;
+        }
+
+        div#i2 {
+          --app-grid-columns: 3;
+          --app-grid-item-height: 90%;
+          --app-grid-gutter: 1.5%
+        }
+
+        div.cat-info-box {
+          position: absolute;
+          width: 44vw;
+          height: 200%;
+          padding: 1vw;
+          float: left;
+        }
+        div.opacity-mask {
+          height: 95%;
+        }
+
+        div#ad_info {
+          top: 0;
+          left: 1vw;
+        }
+        div#cp_info {
+          top: 0;
+          left: -15vw;
+        }
+        div#se_info_d {
+          top: 0;
+          left: -32vw;
+        }
+        div#ip_info_d {
+          top: -105%;
+          left: 1vw;
+        }
+        div#lp_info {
+          top: -105%;
+          left: -15vw;
+        }
+        div#co_info {
+          top: -105%;
+          left: -32vw;
+        }
+
+        div.cat-info-box h2 {
+          margin-top: 0;
+          font-weight: 700;
+          font-size: 40px;
+          line-height: 1.15em;
+          letter-spacing: .07em;
+          word-spacing: -.20em;
+          text-shadow: 2px 2px 4px rgba(0,0,0,.4);
+        }
+
+        div.cat-info-box p {
+          font-size: 22px;
+        }
+
+        article h1 {
+          font-weight: 700;
+          font-size: 50px;
+          line-height: 1.15em;
+          margin-top: 10px;
+          margin-bottom: 30px;
+          letter-spacing: .1em;
+          word-spacing: -.20em;
+        }
+
+        article h1.a-title {
+          color: #F18A19;
+        }
+
+        article p {
+          font-size: 18px;
+          line-height: 25px;
+          font-stretch: expanded;
+          text-align: left;
+          margin-bottom: 16px;
+          margin-left: 25px;
+          margin-right: 20px;
+          margin-top: 4px;
+          text-shadow: 0 1px 0 #fff;
+        }
+
+        article hr {
+          width: 100px;
+          height: 1px;
+          border: none;
+          margin: 20px auto;
+          background-color: black;
+        }
+
+        img#se_icon_m {
+          display: none;
+        }
+        img#ip_icon_m {
+          display: none;
+        }
+
+        img.cat-icon {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    </style>
+    <div id="scrollingRegion">
+      <!--<header>
+        <app-toolbar>
+          <div main-title="">POLYMER</div>
+        </app-toolbar>
+        <app-box scroll-target="scrollingRegion" threshold="64" threshold-triggered="">
+          <ul role="navigation" class="nav">
+            <li><a href="#speed">Speed</a></li>
+            <li><a href="#modern">Modern</a></li>
+            <li><a href="#standard">Standard</a></li>
+            <li><a href="#create">Create</a></li>
+          </ul>
+        </app-box>
+      </header>-->
+
+      <section id="speed">
+        <app-box class="hero" scroll-target="scrollingRegion" effects="parallax-background"></app-box>
+        <article class="content">
+
+          <div id="intro" class="layout">
+            <div id="i1" class="flex">
+              <h1 id="wsf" class="a-title">
+                <span class="purple">World</span>&nbsp;
+                <span class="orange">Startup</span>&nbsp;
+                <span class="blue">Festival</span>
+              </h1>
+
+              <p>The world is about to enter the 4th industrial revolution, a period governed by Artificial Intelligence,
+                Internet of Things, Robotics, Blockchain and all other disruptive technologies. According to World Economic
+                Forum’s Future of Jobs report, around 5 million jobs will be lost, and new jobs exist now that had never
+                been heard of five years ago. With young people under 25 getting close to 40% of global population on today,
+                the future is uncertain.</p>
+
+              <p>The old world cannot provide the same opportunities any longer. The world of the future is all about
+                automation, giving more power to the people, and creating an equal society. This is the world of new
+                opportunities. This is the world of entrepreneurship.</p>
+            </div>
+
+            <div id="i2" class="flex">
+              <ul class="app-grid" has-aspect-ratio="">
+                <li class="item">
+                  <div>
+                    <a href="#">
+                      <img id="ad_icon" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/a-d.svg">
+                    </a>
+                    <div id="ad_info" class="cat-info-box hidden" on-tap="cInfoTap">
+                      <div class="opacity-mask">
+                        <h2 class="orange">Angels &amp; Demons</h2>
+                        <p>
+                          Exclusive investor lounge accessible only to Premium Pass holders and startups from the
+                          D’Academy/ MaGIC accelerator programme.
+                        </p>
+                        <p>
+                          This is where startups are intimately introduced to
+                          WSF’s group of angel and private equity investors through closed-door meetings,
+                          shark tank pitches and many more!!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <a href="#">
+                      <img id="cp_icon" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/chatpods.svg">
+                    </a>
+                    <div id="cp_info" class="cat-info-box hidden" on-tap="cInfoTap">
+                      <div class="opacity-mask">
+                        <h2 class="orange">Chat Pods</h2>
+                        <p>
+                          A cluster of pods where delegates get to pre-book me to meet with other people at the
+                          Festival. Book your meetings now!!
+                        </p>
+                      </div>
+                      <p></p>
+                    </div>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <a href="#">
+                      <img id="se_icon_d" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/startup-expo.svg">
+                      <img id="ip_icon_m" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/ideapad.svg">
+                    </a>
+                    <div id="se_info_d" class="cat-info-box hidden" on-tap="cInfoTap">
+                      <div class="opacity-mask">
+                        <h2 class="orange">Startup Expo</h2>
+                        <p>
+                          This is the startup exhibition space where interesting startups from across the globe get
+                          to feature their business and network with peers.
+                        </p>
+                      </div>
+                    </div>
+                    <div id="ip_info_m" class="cat-info-box hidden" on-tap="cInfoTap">
+                      <div class="opacity-mask">
+                        <h2 class="orange">IdeaPad</h2>
+                        <p>
+                          Stage for panel discussions, workshops and keynote seminars on the latest in startup news,
+                          latest business developments, new technologies, tax landscapes in different countries and many more!!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <a href="#">
+                      <img id="ip_icon_d" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/ideapad.svg">
+                      <img id="se_icon_m" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/startup-expo.svg">
+                    </a>
+                    <div id="ip_info_d" class="cat-info-box hidden" on-tap="cInfoTap">
+                      <div class="opacity-mask">
+                        <h2 class="orange">IdeaPad</h2>
+                        <p>
+                          Stage for panel discussions, workshops and keynote seminars on the latest in startup news,
+                          latest business developments, new technologies, tax landscapes in different countries and many more!!
+                        </p>
+                        <p></p>
+                      </div>
+                    </div>
+                    <div id="se_info_m" class="cat-info-box hidden" on-tap="cInfoTap">
+                      <div class="opacity-mask">
+                        <h2 class="orange">Startup Expo</h2>
+                        <p>
+                          This is the startup exhibition space where interesting startups from across the globe get
+                          to feature their business and network with peers.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <a href="#">
+                      <img id="lp_icon" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/launchpad.svg">
+                    </a>
+                    <div id="lp_info" class="cat-info-box hidden" on-tap="cInfoTap">
+                      <div class="opacity-mask">
+                        <h2 class="orange">LaunchPad</h2>
+                        <p>
+                          Platform for the launch of new initiatives by corporations and international organisations
+                          and new products by financial companies, catered for the startup ecosystem.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <a href="#">
+                      <img id="co_icon" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/collaboratorium.svg">
+                    </a>
+                    <div id="co_info" class="cat-info-box hidden" on-tap="cInfoTap">
+                      <div class="opacity-mask">
+                        <h2 class="orange">Collaboratorium</h2>
+                        <p>
+                          A space for collaborative argument, ideas and matchmaking between startup peers, programmers
+                          and corporates. Connect and collaborate!!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+      <div id="nav_bar">
+        <div id="logo">
+          <img src="/images/wsf-logo-160x70.svg" alt="WSF">
+        </div>
+      </div>
+    </div>
+
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class WsfApp extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'wsf-app'; }
+
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'wsf-app'
+          }
+        };
+      }
+
+      cImgTap(e) {
+        const id = e.currentTarget.id;
+
+        let aniConfig = [
+            {opacity: 0, easing: 'ease-in'},
+            {opacity: 1 }
+          ];
+        let aniDuration = {duration: 250};
+
+        switch (id) {
+          case 'ad_icon':
+            this.$.ad_info.classList.remove('hidden');
+            const adAnim = this.$.ad_info.animate(aniConfig, aniDuration);
+            break;
+
+          case 'cp_icon':
+            this.$.cp_info.classList.remove('hidden');
+            const cpAnim = this.$.cp_info.animate(aniConfig, aniDuration);
+            break;
+
+          case 'se_icon_d':
+            this.$.se_info_d.classList.remove('hidden');
+            const sedAnim = this.$.se_info_d.animate(aniConfig, aniDuration);
+            break;
+
+          case 'se_icon_m':
+            this.$.se_info_m.classList.remove('hidden');
+            const semAnim = this.$.se_info_m.animate(aniConfig, aniDuration);
+            break;
+
+          case 'ip_icon_m':
+            this.$.ip_info_m.classList.remove('hidden');
+            const ipmAnim = this.$.ip_info_m.animate(aniConfig, aniDuration);
+            break;
+
+          case 'ip_icon_d':
+            this.$.ip_info_d.classList.remove('hidden');
+            const ipdAnim = this.$.ip_info_d.animate(aniConfig, aniDuration);
+            break;
+
+          case 'lp_icon':
+            this.$.lp_info.classList.remove('hidden');
+            const lpAnim = this.$.lp_info.animate(aniConfig, aniDuration);
+            break;
+
+          case 'co_icon':
+            this.$.co_info.classList.remove('hidden');
+            const coAnim = this.$.co_info.animate(aniConfig, aniDuration);
+            break;
+
+        }
+      }
+
+      cInfoTap(e) {
+        const id = e.currentTarget.id;
+
+        let aniConfig = [
+          {opacity: 1, easing: 'ease-out'},
+          {opacity: 0 }
+        ];
+        let aniDuration = {duration: 250};
+
+        switch (id) {
+          case 'ad_info':
+            const adAnim = this.$.ad_info.animate(aniConfig, aniDuration);
+
+            adAnim.onfinish = () => {
+              this.$.ad_info.classList.add('hidden');
+            };
+            break;
+
+          case 'cp_info':
+            const cpAnim = this.$.cp_info.animate(aniConfig, aniDuration);
+
+            cpAnim.onfinish = () => {
+              this.$.cp_info.classList.add('hidden');
+            };
+            break;
+
+          case 'se_info_d':
+            const sedAnim = this.$.se_info_d.animate(aniConfig, aniDuration);
+
+            sedAnim.onfinish = () => {
+              this.$.se_info_d.classList.add('hidden');
+            };
+            break;
+
+          case 'se_info_m':
+            const semAnim = this.$.se_info_m.animate(aniConfig, aniDuration);
+
+            semAnim.onfinish = () => {
+              this.$.se_info_m.classList.add('hidden');
+            };
+            break;
+
+          case 'ip_info_m':
+            const ipmAnim = this.$.ip_info_m.animate(aniConfig, aniDuration);
+
+            ipmAnim.onfinish = () => {
+              this.$.ip_info_m.classList.add('hidden');
+            };
+            break;
+
+          case 'ip_info_d':
+            const ipdAnim = this.$.ip_info_d.animate(aniConfig, aniDuration);
+
+            ipdAnim.onfinish = () => {
+              this.$.ip_info_d.classList.add('hidden');
+            };
+            break;
+
+          case 'lp_info':
+            const lpAnim = this.$.lp_info.animate(aniConfig, aniDuration);
+
+            lpAnim.onfinish = () => {
+              this.$.lp_info.classList.add('hidden');
+            };
+            break;
+
+          case 'co_info':
+            const coAnim = this.$.co_info.animate(aniConfig, aniDuration);
+
+            coAnim.onfinish = () => {
+              this.$.co_info.classList.add('hidden');
+            };
+            break;
+
+        }
+      }
+    }
+
+    window.customElements.define(WsfApp.is, WsfApp);
+  </script>
+</dom-module>
