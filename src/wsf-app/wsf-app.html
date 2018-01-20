@@ -138,7 +138,6 @@
 
       div.opacity-mask {
         position: relative;
-        padding-top: 20px;
         top: 0;
         bottom: 0;
         left: 0;
@@ -151,27 +150,27 @@
 
       div#ad_info {
         background: #fff url("/src/wsf-app/assets/a-d.svg") no-repeat center center;
-        background-size: 60%;
+        background-size: contain;
       }
       div#cp_info {
         background: #fff url("/src/wsf-app/assets/chatpods.svg") no-repeat center center;
-        background-size: 60%;
+        background-size: contain;
       }
       div#se_info_d, div#se_info_m {
         background: #fff url("/src/wsf-app/assets/startup-expo.svg") no-repeat center center;
-        background-size: 60%;
+        background-size: contain;
       }
       div#ip_info_d, div#ip_info_m {
         background: #fff url("/src/wsf-app/assets/ideapad.svg") no-repeat center center;
-        background-size: 60%;
+        background-size: contain;
       }
       div#lp_info {
         background: #fff url("/src/wsf-app/assets/launchpad.svg") no-repeat center center;
-        background-size: 60%;
+        background-size: contain;
       }
       div#co_info {
         background: #fff url("/src/wsf-app/assets/collaboratorium.svg") no-repeat center center;
-        background-size: 60%;
+        background-size: contain;
       }
 
 
@@ -179,7 +178,7 @@
 
       }
 
-      @media only screen and (max-width: 991px){
+      @media only screen and (min-width: 320px) and (max-width: 991px){
         article.content {
           margin: 0 auto 52px auto;
           /*height: 80vh;*/
@@ -220,12 +219,12 @@
         div.cat-info-box {
           position: absolute;
           width: 88vw;
-          height: 150%;
-          padding: 1vw;
+          height: auto;
+          padding: 0;
           float: left;
         }
         div.opacity-mask {
-          height: 95%;
+          height: 100%;
         }
 
         div#ad_info {
@@ -255,6 +254,7 @@
 
         div.cat-info-box h2 {
           margin-top: 0;
+          padding-top: 15px;
           font-weight: 700;
           font-size: 30px;
           line-height: 1.15em;
@@ -351,41 +351,42 @@
         div.cat-info-box {
           position: absolute;
           width: 44vw;
-          height: 200%;
-          padding: 1vw;
+          height: 100%;
+          padding: 0;
           float: left;
         }
         div.opacity-mask {
-          height: 95%;
+          height: 100%;
         }
 
         div#ad_info {
           top: 0;
-          left: 1vw;
+          left: 2vw;
         }
         div#cp_info {
           top: 0;
-          left: -15vw;
+          left: -14vw;
         }
         div#se_info_d {
           top: 0;
-          left: -32vw;
+          left: -31vw;
         }
         div#ip_info_d {
-          top: -105%;
-          left: 1vw;
+          top: -2vh;
+          left: 2vw;
         }
         div#lp_info {
-          top: -105%;
-          left: -15vw;
+          top: -2vh;
+          left: -14vw;
         }
         div#co_info {
-          top: -105%;
-          left: -32vw;
+          top: -2vh;
+          left: -31vw;
         }
 
         div.cat-info-box h2 {
           margin-top: 0;
+          padding-top: 20px;
           font-weight: 700;
           font-size: 40px;
           line-height: 1.15em;
