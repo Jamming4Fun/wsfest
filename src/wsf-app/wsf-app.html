@@ -28,7 +28,7 @@
         top: 0;
         bottom: 0;
         overflow-y: scroll;
-        background-color: #f3f3f3;
+        background-color: #333;
         box-shadow: 0 0 200px rgba(0, 0, 0, 0.1);
         scroll-behavior: smooth;
       }
@@ -100,6 +100,19 @@
         text-shadow: 0 1px 0 #ccc;
       }
 
+      article h1 {
+        text-shadow: 2px 2px 4px rgba(255,255,255,.4);
+      }
+
+      article p {
+        color: #ccc;
+        text-shadow: 0 1px 0 #000;
+      }
+
+      article hr {
+        background-color: #ccc;
+      }
+
       div#nav_bar {
         @apply --layout-horizontal;
       }
@@ -133,7 +146,11 @@
         z-index: 10;
         background-color: #fff;
         border-radius: 10%;
-        box-shadow: 4px 4px 16px rgba(0,0,0,.2);
+        box-shadow: 4px 4px 16px rgba(150,150,150,.2);
+      }
+
+      div.cat-info-box h2{
+        text-shadow: 2px 2px 4px rgba(255,255,255,.4);
       }
 
       div.opacity-mask {
@@ -143,7 +160,7 @@
         left: 0;
         right: 0;
         width: 100%;
-        background-color: #fff;
+        background-color: #333;
         border-radius: 10%;
         opacity: 0.86;
       }
@@ -260,7 +277,6 @@
           line-height: 1.15em;
           letter-spacing: .07em;
           word-spacing: -.20em;
-          text-shadow: 2px 2px 4px rgba(0,0,0,.4);
         }
 
         div.cat-info-box p {
@@ -279,7 +295,6 @@
           margin-bottom: 30px;
           letter-spacing: .1em;
           word-spacing: -.20em;
-          text-shadow: 2px 2px 4px rgba(0,0,0,.4);
         }
         article h1.a-title {
           color: #F18A19;
@@ -292,14 +307,12 @@
           padding-left: 2%;
           padding-right: 2%;
           margin: 4px 10px 15px;
-          text-shadow: 0 1px 0 #fff;
         }
         article hr {
           width: 100px;
           height: 1px;
           border: none;
           margin: 20px auto;
-          background-color: black;
         }
 
         img#se_icon_d {
@@ -392,7 +405,6 @@
           line-height: 1.15em;
           letter-spacing: .07em;
           word-spacing: -.20em;
-          text-shadow: 2px 2px 4px rgba(0,0,0,.4);
         }
 
         div.cat-info-box p {
@@ -406,7 +418,6 @@
           margin-bottom: 30px;
           letter-spacing: .1em;
           word-spacing: -.20em;
-          text-shadow: 2px 2px 4px rgba(0,0,0,.4);
         }
 
         article h1.a-title {
@@ -422,7 +433,6 @@
           margin-left: 25px;
           margin-right: 20px;
           margin-top: 4px;
-          text-shadow: 0 1px 0 #fff;
         }
 
         article hr {
@@ -430,7 +440,6 @@
           height: 1px;
           border: none;
           margin: 20px auto;
-          background-color: black;
         }
 
         img#se_icon_m {
