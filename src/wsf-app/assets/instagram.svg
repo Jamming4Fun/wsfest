@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>post-instagram</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="touch-icons-&amp;-theme" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="post-instagram" fill="#F3F3F3">
+            <path d="M45,0 L5,0 C2.25,0 0,2.25 0,5 L0,45 C0,47.75 2.25,50 5,50 L45,50 C47.75,50 50,47.75 50,45 L50,5 C50,2.25 47.75,0 45,0 L45,0 Z M25,15 C30.5,15 35,19.5 35,25 C35,30.5 30.5,35 25,35 C19.5,35 15,30.5 15,25 C15,19.5 19.5,15 25,15 L25,15 Z M6.25,45 C5.5,45 5,44.5 5,43.75 L5,22.5 L10.25,22.5 C10,23.25 10,24.25 10,25 C10,33.25 16.75,40 25,40 C33.25,40 40,33.25 40,25 C40,24.25 40,23.25 39.75,22.5 L45,22.5 L45,43.75 C45,44.5 44.5,45 43.75,45 L6.25,45 L6.25,45 Z M45,11.25 C45,12 44.5,12.5 43.75,12.5 L38.75,12.5 C38,12.5 37.5,12 37.5,11.25 L37.5,6.25 C37.5,5.5 38,5 38.75,5 L43.75,5 C44.5,5 45,5.5 45,6.25 L45,11.25 L45,11.25 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

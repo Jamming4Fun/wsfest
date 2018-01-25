@@ -77,7 +77,7 @@
         z-index: 1;
       }
 
-      .hero {
+      #hero {
         height: 100vh;
 
         --app-box-background-front-layer: {
@@ -87,6 +87,46 @@
           margin-top: 0;
           height: 115%;
         };
+      }
+      #freda {
+        height: 70vh;
+
+        --app-box-background-front-layer: {
+          background-image: url(assets/freda.jpg);
+          background-position: top left;
+          padding-bottom: 0vh;
+          margin-top: 0;
+          height: 120%;
+        };
+      }
+      #freda_info, #contact_info {
+        height: auto;
+      }
+
+      article#freda_content {
+        margin: auto;
+        max-width: 1024px;
+        background-color: #fcfcfc;
+        box-shadow: 4px 4px 16px rgba(150,150,150,.2);
+        padding-bottom: 70px;
+      }
+      article#freda_content h2 {
+        margin-top: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,.4);
+      }
+      article#freda_content p {
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+      }
+
+      div#c1 {
+        padding-top: 30px;
+      }
+      div#ci_wrapper {
+        margin: auto;
+        max-width: 1024px;
       }
 
       section {
@@ -104,9 +144,13 @@
         text-shadow: 2px 2px 4px rgba(255,255,255,.4);
       }
 
-      article p {
+      article p, #ci span {
         color: #ccc;
         text-shadow: 0 1px 0 #000;
+      }
+
+      .label {
+        font-weight: bold;
       }
 
       article hr {
@@ -190,6 +234,15 @@
         background-size: contain;
       }
 
+      #in_icon, #fb_icon, #tw_icon, #yt_icon {
+        width: 70px;
+      }
+
+      div#ci {
+        padding: 20px;
+        text-align: left;
+      }
+
 
       @media only screen and (max-width: 480px) {
 
@@ -218,7 +271,7 @@
           height: 40px;
         }
 
-        div#intro {
+        div#intro, div#ci_wrapper {
           @apply --layout-vertical;
         }
 
@@ -226,11 +279,14 @@
           margin-bottom: 40px;
         }
 
-        div#i2 {
+        div#i2, div#c2 {
           --app-grid-columns: 2;
           --app-grid-item-height: 100%;
           --app-grid-gutter: 1.5%;
           height: calc(100vh - 52px);
+        }
+        div#c2 {
+          --app-grid-item-height: 50%;
         }
 
         div.cat-info-box {
@@ -351,13 +407,18 @@
           height: 50px;
         }
 
-        div#intro {
+        div#intro, div#ci_wrapper {
           @apply --layout-horizontal;
         }
 
         div#i2 {
           --app-grid-columns: 3;
           --app-grid-item-height: 90%;
+          --app-grid-gutter: 1.5%
+        }
+        div#c2 {
+          --app-grid-columns: 2;
+          --app-grid-item-height: 45%;
           --app-grid-gutter: 1.5%
         }
 
@@ -471,9 +532,8 @@
       </header>-->
 
       <section id="speed">
-        <app-box class="hero" scroll-target="scrollingRegion" effects="parallax-background"></app-box>
+        <app-box id="hero" scroll-target="scrollingRegion" effects="parallax-background"></app-box>
         <article class="content">
-
           <div id="intro" class="layout">
             <div id="i1" class="flex">
               <h1 id="wsf" class="a-title">
@@ -492,7 +552,6 @@
                 automation, giving more power to the people, and creating an equal society. This is the world of new
                 opportunities. This is the world of entrepreneurship.</p>
             </div>
-
             <div id="i2" class="flex">
               <ul class="app-grid" has-aspect-ratio="">
                 <li class="item">
@@ -621,6 +680,97 @@
             </div>
           </div>
         </article>
+        <app-box id="freda" scroll-target="scrollingRegion" effects="parallax-background"></app-box>
+        <div id="freda_info" class="content">
+          <article id="freda_content">
+
+            <h2>Celebrating Entrepreneurship</h2>
+
+            <p>Welcome to the World Startup Festival!</p>
+            <p>WSF is a world-class platform uniquely capturing the best of entrepreneurial spirit, diversity,
+              vibrancy, and creative innovation of different nations. We believe in the power of the youth,
+              women and entrepreneurs everywhere.</p>
+            <p>There has never been a greater need for entrepreneurs that WSF seeks to celebrate and support.
+              By bringing together investors and innovators from around the world, we aim to create a platform
+              that unites the knowledge of the past with the urgency of the present and the promise of the future.
+              Our platform exposes young entrepreneurs to the abundant opportunities created by disruptive
+              technologies, and entrepreneurship culture of the startup ecosystem. WSF is Celebrating Entrepreneurship
+              by reimagining face-to-face dialogue and how we exchange our views in the 21st century.</p>
+            <p>WSF comprises 3 core areas namely the Festival, the Magazine, and the Accelerator. Our Festival offers
+              a vast array of interesting features for investors and startup founders alike.  To name but a few of
+              them, the LaunchPad and IdeaPad segments consider mapping tomorrow’s business landscape and the future
+              of financing. Angels and Unicorns charts the journey of the quintessential startup – from ideation,
+              seeding and funding to exit – bringing out best practices of startups. Our Music Jam, Collaboratorium,
+              Chat Pods, and Startup Expo provide unconventional networking spaces for long-term collaborations and
+              our inspirational Awards ceremony honours the best of startups in the global ecosystem. The Magazine
+              keeps the world abreast of the latest news in the startup ecosystem and provides a credible rating
+              of startups worldwide for the purpose of investment readiness. The Accelerator offers an immersive
+              experience for startups to learn business fundamentals and plug them in a track to engage investors
+              for funding and market access.</p>
+            <p>WSF exists to support the changing work of entrepreneurs. The world of the future is all about
+              automation, giving more power to the people, and creating an equal society. This is the world of new
+              opportunities. This is the world of entrepreneurship and we invite you to join us in this global
+              project and savor an unforgettable experience of, Celebrating Entrepreneurship, together.</p>
+            <p></p>
+            <p>Let's make it happen!</p>
+            <p><br></p>
+            <p><b>Freda Miriklis</b><br>President<br>World Startup Festival</p>
+          </article>
+        </div>
+        <div id="contact_info" class="contact">
+          <article class="content">
+            <div id="ci_wrapper" class="layout">
+              <div id="c1" class="flex">
+                <p><span class="label">World Startup Festival (HQ)</span><br>
+                  2575 McCabeWay,<br>
+                  Suite 100,<br>
+                  Irvine, CA, USA.</p>
+                <p><span class="label">Asia HQ (Licensed Regional Partner)</span><br>
+                  D’Academy<br>
+                  Suite 5.01, Wisma Keck Seng,<br>
+                  Jalan Bukit Bintang,<br>
+                  55100 Kuala Lumpur.</p>
+                <div id="ci">
+                  <span class="label">Hotline: </span><span>+1-949-6099666</span>
+                  <br>
+                  <span class="label">Email: </span><span>hello@worldstartupfestival.com</span>
+                </div>
+              </div>
+              <div id="c2" class="flex">
+                <ul class="app-grid" has-aspect-ratio="">
+                  <li class="item">
+                    <div>
+                      <a href="http://instagram.com/worldstartupfestival" target="_self">
+                        <img id="in_icon" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/instagram.svg">
+                      </a>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <a href="http://youtube.com/worldstartupfestival" target="_self">
+                        <img id="yt_icon" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/youtube.svg">
+                      </a>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <a href="http://twitter.com/worldstartupfestival" target="_self">
+                        <img id="tw_icon" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/twitter.svg">
+                      </a>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <a href="http://facebook.com/worldstartupfestival" target="_self">
+                        <img id="fb_icon" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/facebook.svg">
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
       </section>
       <div id="nav_bar">
         <div id="logo">
