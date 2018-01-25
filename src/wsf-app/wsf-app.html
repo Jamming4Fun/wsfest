@@ -104,10 +104,12 @@
       }
 
       article#freda_content {
+        position: relative;
+        top: -30px;
         margin: auto;
         max-width: 1024px;
         background-color: #fcfcfc;
-        box-shadow: 4px 4px 16px rgba(150,150,150,.2);
+        box-shadow: 4px 4px 16px rgba(0,0,0,.7);
         padding-bottom: 70px;
       }
       article#freda_content h2 {
@@ -209,6 +211,11 @@
         opacity: 0.86;
       }
 
+      .item img {
+        position: relative;
+        top: 3vh;
+      }
+
       div#ad_info {
         background: #fff url("/src/wsf-app/assets/a-d.svg") no-repeat center center;
         background-size: contain;
@@ -243,6 +250,10 @@
         text-align: left;
       }
 
+      div#contact_info {
+        padding-bottom: 85px;
+      }
+
 
       @media only screen and (max-width: 480px) {
 
@@ -250,7 +261,7 @@
 
       @media only screen and (min-width: 320px) and (max-width: 991px){
         article.content {
-          margin: 0 auto 52px auto;
+          margin: 0 auto 0 auto;
           /*height: 80vh;*/
         }
 
@@ -386,7 +397,7 @@
 
       @media only screen and (min-width: 992px) {
         article.content {
-          margin: 0 auto 101px auto;
+          margin: 0 auto 0 auto;
           /*height: 80vh;*/
         }
 
@@ -740,28 +751,28 @@
                 <ul class="app-grid" has-aspect-ratio="">
                   <li class="item">
                     <div>
-                      <a href="http://instagram.com/worldstartupfestival" target="_self">
+                      <a href="http://instagram.com/worldstartupfestival" target="_blank">
                         <img id="in_icon" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/instagram.svg">
                       </a>
                     </div>
                   </li>
                   <li class="item">
                     <div>
-                      <a href="http://youtube.com/worldstartupfestival" target="_self">
+                      <a href="http://youtube.com/worldstartupfestival" target="_blank">
                         <img id="yt_icon" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/youtube.svg">
                       </a>
                     </div>
                   </li>
                   <li class="item">
                     <div>
-                      <a href="http://twitter.com/worldstartupfestival" target="_self">
+                      <a href="http://twitter.com/worldstartupfestival" target="_blank">
                         <img id="tw_icon" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/twitter.svg">
                       </a>
                     </div>
                   </li>
                   <li class="item">
                     <div>
-                      <a href="http://facebook.com/worldstartupfestival" target="_self">
+                      <a href="http://facebook.com/worldstartupfestival" target="_blank">
                         <img id="fb_icon" on-tap="cImgTap" class="cat-icon" src="/src/wsf-app/assets/facebook.svg">
                       </a>
                     </div>
